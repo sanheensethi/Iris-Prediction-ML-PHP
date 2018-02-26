@@ -1,45 +1,8 @@
 <?php
 	$irisFileDatas = file("iris.csv");
 	$testFileDatas = file("test.csv");
-	$irisData=[];
-	$testData=[];
-	echo "<pre>";
 	
-	foreach($irisFileDatas as $irisFileData){
-		$irisData[] = explode(",",trim($irisFileData," "));
-	}
-	
-	foreach($testFileDatas as $testFileData){
-		$testData[] = explode(",",trim($testFileData," "));
-	}
-	
-	//Training Data Calculation
-	$TrainingData = training($irisData);
-	
-	$trainData = $TrainingData[0];
-	$labeledData = $TrainingData[1];
-	
-	$TestData = test($testData);
-	$testData = $TestData[0];
-	$testActualLabel = $TestData[1];
-	$keys = Predict($trainData,$testData);
-	
-	foreach($keys as $key){
-		$predictedData[] =  $labeledData[$key[0]];
-	}
-	
-	echo "<h2>Given 139 Sets of Data For Training</h2>";
-	echo "<h2>Testing Data : </h2>";
-	var_dump($testFileDatas);
-	
-	echo "<h1>Predicted Species : </h1>";
-	var_dump($predictedData);
-	
-	echo "<h1>Actual Species : </h1>";
-	var_dump($testActualLabel);
-	
-	echo "<h1>Accuracy : ".accuracy($predictedData,$testActualLabel)."%</h1>";
-	
+	main($irisFileDatas,$testFileDatas);
 	
 	function training(Array $trainingDatas){
 		foreach($trainingDatas as $trainingData){
@@ -100,4 +63,46 @@
 		}
 		return (($correct+1)/count($predictedDatas))*100;
 	}
+	
+	function main($irisFileDatas,$testFileDatas){
+	$irisData=[];
+	$testData=[];
+	echo "<pre>";
+	
+	foreach($irisFileDatas as $irisFileData){
+	$irisData[] = explode(",",trim($irisFileData," "));
+	}
+	
+	foreach($testFileDatas as $testFileData){
+	$testData[] = explode(",",trim($testFileData," "));
+	}
+	
+	//Training Data Calculation
+	$TrainingData = training($irisData);
+	
+	$trainData = $TrainingData[0];
+	$labeledData = $TrainingData[1];
+	
+	$TestData = test($testData);
+	$testData = $TestData[0];
+	$testActualLabel = $TestData[1];
+	$keys = Predict($trainData,$testData);
+	
+	foreach($keys as $key){
+	$predictedData[] =  $labeledData[$key[0]];
+	}
+	
+	echo "<h2>Given 139 Sets of Data For Training</h2>";
+	echo "<h2>Testing Data : </h2>";
+	var_dump($testFileDatas);
+	
+	echo "<h1>Predicted Species : </h1>";
+	var_dump($predictedData);
+	
+	echo "<h1>Actual Species : </h1>";
+	var_dump($testActualLabel);
+	
+	echo "<h1>Accuracy : ".accuracy($predictedData,$testActualLabel)."%</h1>";
+	}
+	
 ?>
