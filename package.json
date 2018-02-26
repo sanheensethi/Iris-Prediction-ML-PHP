@@ -1,0 +1,23 @@
+{
+  "name": "iris-prediction-ml-php",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanheensethi/Iris-Prediction-ML-PHP.git"
+  },
+  "keywords": [
+    "machinelearningphp",
+    "php"
+  ],
+  "author": "Sanheen Sethi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sanheensethi/Iris-Prediction-ML-PHP/issues"
+  },
+  "homepage": "https://github.com/sanheensethi/Iris-Prediction-ML-PHP#readme"
+}
